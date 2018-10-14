@@ -1,5 +1,5 @@
 
-FROM jenkins:latest
+FROM jenkinsci/jenkins:lts
 MAINTAINER tomsun28 <usthe.com>
 #安装jenkins插件
 USER jenkins
@@ -15,6 +15,7 @@ RUN echo "docker:x:${dockerGid}:jenkins" >> /etc/group \
     && apt-get install -y libltdl7 \
     && rm -rf /var/lib/apt/list/*
 
+USER jenkins
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+#COPY entrypoint.sh /entrypoint.sh
+#ENTRYPOINT ["/entrypoint.sh"]
